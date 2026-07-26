@@ -17,6 +17,7 @@ chrome浏览器书签管理插件，使用腾讯云对象存储COS 云同步。
 - 右键插件图标 →「选项」进入 COS 设置页，配置腾讯云存储桶参数
 
 ## 文件清单
+```
 bookmark-manager/
 ├── manifest.json
 ├── background.js       （含 COSClient 类 + 后台逻辑）
@@ -30,3 +31,4 @@ bookmark-manager/
 ├── options.js
 ├── lib/
 │   └── cos-js-sdk-v5.min.js
+```
