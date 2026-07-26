@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "Bookmark Sync & Manager",
+  "version": "1.0.0",
+  "description": "书签多设备同步至腾讯云COS，支持树形管理、批量操作、搜索、去重、失效检测",
+  "permissions": [
+    "bookmarks",
+    "storage",
+    "history",
+    "alarms",
+    "notifications"
+  ],
+  "host_permissions": [
+    "https://*/*",
+    "http://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "书签管理器"
+  },
+  "options_page": "options.html",
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "manager.html",
+        "manager.js",
+        "manager.css",
+		"lib/cos-js-sdk-v5.min.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
+}

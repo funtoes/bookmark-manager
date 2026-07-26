@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>书签管理器</title>
+  <link rel="stylesheet" href="manager.css">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- 侧边栏：树形书签列表 -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h3>📁 书签目录</h3>
+        <button id="expandAllBtn" title="全部展开">全部展开</button>
+        <button id="collapseAllBtn" title="全部折叠">全部折叠</button>
+      </div>
+      <div class="tree-container" id="bookmarkTree">
+        <!-- 动态渲染书签树 -->
+      </div>
+      <!-- 批量操作工具栏 -->
+      <div class="batch-toolbar hidden" id="batchToolbar">
+        <span>已选择 <span id="selectedCount">0</span> 项</span>
+        <button id="selectAllBtn">全选</button>
+        <button id="deselectAllBtn">取消选择</button>
+        <button id="batchDeleteBtn" class="btn-danger">🗑️ 批量删除</button>
+      </div>
+      <!-- 同步操作区 -->
+      <div class="sync-sidebar">
+        <button id="uploadSyncBtn" title="上传书签到云端">☁️ 上传</button>
+        <button id="downloadSyncBtn" title="从云端下载书签">⬇️ 下载</button>
+        <button id="openOptionsBtn" title="同步设置">⚙️</button>
+      </div>
+    </aside>
+
+    <!-- 主内容区 -->
+    <main class="main-content">
+      <div class="toolbar">
+        <div class="toolbar-row">
+          <input type="text" id="globalSearchInput" placeholder="全局搜索书签（标题/URL）...">
+          <div class="sort-controls">
+            <label for="sortSelect">排序：</label>
+            <select id="sortSelect">
+              <option value="default">默认顺序</option>
+              <option value="frequent">使用频率 ↓</option>
+              <option value="recent">最近添加 ↓</option>
+              <option value="alphabetical">字母顺序 A-Z</option>
+            </select>
+            <select id="sortScope">
+              <option value="all">所有书签</option>
+              <option value="selected">当前选中文件夹</option>
+            </select>
+            <button id="applySortBtn">应用排序</button>
+            <span class="toolbar-separator">|</span>
+            <button id="detectDuplicatesBtn" class="btn-warning">🔍 检测重复书签</button>
+            <button id="detectDeadLinksBtn" class="btn-danger-outline">🔗 检测失效链接</button>
+          </div>
+        </div>
+      </div>
+      <div class="content-area" id="contentArea">
+        <div class="welcome-panel">
+          <h2>📖 欢迎使用书签管理器</h2>
+          <p>在左侧选择书签查看详情，或使用顶部的搜索、排序、检测工具。</p>
+          <div class="quick-actions">
+            <button id="quickUploadBtn" class="btn-primary">☁️ 同步书签到云端</button>
+            <button id="quickDownloadBtn" class="btn-secondary-outline">⬇️ 从云端恢复书签</button>
+            <button id="showSyncStatusBtn" class="btn-secondary-outline">📊 查看同步状态</button>
+          </div>
+          <div id="syncStatusCard" class="sync-status-card" style="display:none;"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="manager.js"></script>
+</body>
+</html>

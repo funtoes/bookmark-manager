@@ -1,0 +1,35 @@
+body {
+  width: 260px;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  margin: 0;
+  padding: 12px;
+  background: #f9fafb;
+}
+.popup-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+h2 {
+  margin: 0;
+  font-size: 18px;
+  color: #1f2937;
+}
+input {
+  padding: 6px 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+}
+button {
+  padding: 8px;
+  background: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+button:hover {
+  background: #4338ca;
+}

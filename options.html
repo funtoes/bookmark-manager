@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>书签同步设置</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #f3f4f6;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+    }
+    .settings-container {
+      background: white;
+      border-radius: 12px;
+      padding: 32px;
+      max-width: 520px;
+      width: 100%;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    h2 { margin-bottom: 24px; color: #1f2937; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+    .form-group input[type="text"],
+    .form-group input[type="password"],
+    .form-group input[type="number"] {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    .form-group input:focus { outline: none; border-color: #6366f1; }
+    .form-row { display: flex; gap: 12px; }
+    .form-row .form-group { flex: 1; }
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .checkbox-group input { width: 16px; height: 16px; }
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+    .btn-primary { background: #4f46e5; color: white; }
+    .btn-primary:hover { background: #4338ca; }
+    .btn-secondary { background: #e5e7eb; color: #374151; margin-left: 8px; }
+    .btn-secondary:hover { background: #d1d5db; }
+    .btn-test { background: #059669; color: white; }
+    .btn-test:hover { background: #047857; }
+    .actions { margin-top: 24px; display: flex; }
+    .status { margin-top: 16px; padding: 10px; border-radius: 6px; font-size: 13px; }
+    .status.success { background: #d1fae5; color: #065f46; }
+    .status.error { background: #fee2e2; color: #991b1b; }
+    .status.info { background: #e0e7ff; color: #3730a3; }
+  </style>
+</head>
+<body>
+  <div class="settings-container">
+    <h2>☁️ 腾讯云 COS 同步设置</h2>
+    
+    <div class="form-group">
+      <label>Bucket（存储桶名称）</label>
+      <input type="text" id="bucketInput" placeholder="例如：my-bookmarks-1234567890">
+    </div>
+
+    <div class="form-group">
+      <label>Region（地域）</label>
+      <input type="text" id="regionInput" placeholder="例如：ap-guangzhou">
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>SecretId</label>
+        <input type="text" id="secretIdInput" placeholder="您的 SecretId">
+      </div>
+      <div class="form-group">
+        <label>SecretKey</label>
+        <input type="password" id="secretKeyInput" placeholder="您的 SecretKey">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>同步文件名</label>
+      <input type="text" id="syncKeyInput" value="bookmarks-sync.json" placeholder="bookmarks-sync.json">
+    </div>
+
+    <div class="checkbox-group">
+      <input type="checkbox" id="autoSyncCheck">
+      <label for="autoSyncCheck">启用自动同步</label>
+    </div>
+
+    <div class="form-group" id="syncIntervalGroup" style="display:none;">
+      <label>同步间隔（分钟）</label>
+      <input type="number" id="syncIntervalInput" value="60" min="5" max="1440">
+    </div>
+
+    <div class="actions">
+      <button id="saveBtn" class="btn btn-primary">💾 保存设置</button>
+      <button id="testBtn" class="btn btn-test">🔍 测试连接</button>
+    </div>
+
+    <div id="statusMessage" class="status" style="display:none;"></div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>
